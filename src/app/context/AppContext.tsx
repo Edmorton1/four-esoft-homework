@@ -1,18 +1,21 @@
+import muiTheme from "@/app/context/MuiTheme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 import { createContext, useState, type ReactNode } from "react";
 
-type BookType = {
+export type BookType = {
   id: string,
   title: string,
   author: string,
   year: number,
 }
 
-type FilterType = {
+export type FilterType = {
   author?: boolean,
   year?: boolean
 }
 
-type ThemeType = 'light' | 'dark'
+export type ThemeType = 'light' | 'dark'
 
 interface AppContextInterface {
   theme: ThemeType;
@@ -30,10 +33,10 @@ interface AppContextInterface {
   setFilters: (filters: FilterType) => void;
 }
 
-const AppContext = createContext<AppContextInterface | null>(null);
+export const AppContext = createContext<AppContextInterface | null>(null);
 
 function AppProvider({children}: {children: ReactNode}) {
-  const [theme, setTheme] = useState<AppContextInterface['theme']>('dark')
+  const [theme, setTheme] = useState<AppContextInterface['theme']>(localStorage.getItem('theme') === 'light' ? 'light' : 'dark')
   const [books, setBooks] = useState<AppContextInterface['books']>([
     {
       id: crypto.randomUUID(),
@@ -48,14 +51,19 @@ function AppProvider({children}: {children: ReactNode}) {
       year: 1866
     }
   ])
-  const [favorites, setFavorites] = useState<AppContextInterface['favorites']>([books[0].id])
+  // const [favorites, setFavorites] = useState<AppContextInterface['favorites']>([books[0].id])
+  const [favorites, setFavorites] = useState<AppContextInterface['favorites']>([])
   const [searchQuery, setSearchQuery] = useState<AppContextInterface['searchQuery']>('')
   const [filters, setFilters] = useState<AppContextInterface['filters']>({})
 
-  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  const toggleTheme = () => {
+    localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark')
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark'); console.log(theme)
+  }
   const addBook = (book: BookType) => setBooks(prev => [...prev, book])
   const removeBook = (id: string) => setBooks(prev => prev.filter(e => e.id !== id))
   const toggleFavorite = (id: string) => setFavorites(prev => {
+    // console.log(prev)
     if (prev.some(e => e === id)) {
       return prev.filter(e => e !== id)
     } else {
@@ -78,7 +86,10 @@ function AppProvider({children}: {children: ReactNode}) {
     setSearchQuery,
     setFilters
   }}>
-  {children}
+    <ThemeProvider theme={muiTheme(theme)}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
   </AppContext.Provider>
 }
 export default AppProvider;

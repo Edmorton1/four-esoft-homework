@@ -1,20 +1,24 @@
+import AppProvider from "@/app/context/AppContext"
+import { BOOK, MAIN, SETTINGS } from "@/CONST/ROUTES"
 import Book from "@/pages/book/Book"
 import Main from "@/pages/main/Main"
 import Settings from "@/pages/settings/Settings"
-import Header from "@/shared/ui/Header"
+import Header from "@/shared/ui/Header/Header"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 function App() {
 
-  return <BrowserRouter>
-    <Routes>
-      <Route element={<Header />}>
-        <Route path="/" element={<Main />} />
-        <Route path="book/:id" element={<Book />} />
-        <Route path="/settings" element={<Settings />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+  return <AppProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header />}>
+          <Route path={MAIN} element={<Main />} />
+          <Route path={`${BOOK}/:id`} element={<Book />} />
+          <Route path={SETTINGS} element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </AppProvider>
 }
 
 export default App
