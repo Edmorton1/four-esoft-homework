@@ -1,13 +1,11 @@
-import useUpdateParams from "@/shared/hooks/useUpdateParams";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import MenuItem from "@mui/material/MenuItem"
 
 function Author({ author }: { author: string }) {
-  const [params, updateParams] = useUpdateParams();
-  console.log("params include", params?.authors?.includes(author));
+  // console.log("params include", params?.authors?.includes(author));
 
-  const handleClick = () => updateParams("authors", author, false, true);
+  const handleClick = () => console.log("ZAGLUSHA")
 
   return (
     <>
@@ -18,7 +16,7 @@ function Author({ author }: { author: string }) {
         id={author}
         control={<Checkbox />}
         label={author}
-        checked={params?.authors?.includes(author) ?? false}
+        checked={typeof 'params?.authors?.includes(author) ?? false' === 'string'}
       />
     </MenuItem>
 

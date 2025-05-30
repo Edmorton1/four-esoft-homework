@@ -1,10 +1,8 @@
-import useUpdateParams from "@/shared/hooks/useUpdateParams"
 import Button from "@mui/material/Button"
 
 function Reset() {
-  const [params, updateParams, removeParams] = useUpdateParams()
 
-  const handleClick = () => removeParams('*')
+  const handleClick = () => console.log("ZAGLUSHKA")
 
   return <Button variant="contained" onClick={handleClick}>Сбросить фильтры</Button>
 }

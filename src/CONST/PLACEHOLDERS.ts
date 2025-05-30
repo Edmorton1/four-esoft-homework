@@ -1,4 +1,5 @@
-import type { BookType } from "@/app/context/AppContext"
+import type { BookType } from "@/app/context/AppTypes"
+
 
 const LOREM_DESCRIPTION = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eaque quo cum asperiores recusandae reiciendis, esse quam deserunt adipisci corrupti laboriosam dicta provident, quod fugiat ipsum perferendis necessitatibus! Omnis, atque?`
 

@@ -12,7 +12,7 @@ function Main() {
   return <main className={styles.main}>
     <Filters />
     <div className={styles.main__cards}>
-      {ctx?.books.map(book => (<BookCard key={book.id} id={book.id} title={book.title} author={book.author} year={book.year}/>))}
+      {ctx?.filtredBooks.map(book => (<BookCard key={book.id} id={book.id} title={book.title} author={book.author} year={book.year}/>))}
     </div>
   </main>
 }

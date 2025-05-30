@@ -1,18 +1,16 @@
-import useUpdateParams from "@/shared/hooks/useUpdateParams"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import Checkbox from "@mui/material/Checkbox"
 
 function ToggleFavorite() {
-  const [params, updateParams] = useUpdateParams()
   const htmlFor = "input-favorites"
 
-  const handleClick = () => updateParams('favorites', 'true')
+  const handleClick = () => console.log("ZAGLUSHA")
 
   return <>
     <FormControlLabel
       id={htmlFor}
       label="Только избранные"
-      checked={params?.favorites === "true"}
+      checked={typeof `params?.favorites === "true"` === 'string'}
       control={<Checkbox />}
       onChange={handleClick}
     />
