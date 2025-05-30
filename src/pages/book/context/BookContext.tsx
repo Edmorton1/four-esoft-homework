@@ -1,6 +1,20 @@
 import { createContext, useState, type ReactNode } from "react";
 
-type sizeType = "small" | "medium" | "large"
+export const FONT_SIZE = {
+  small: "маленький",
+  medium: "средний",
+  large: "большой"
+} as const
+
+export type sizeType = keyof typeof FONT_SIZE
+
+export const COLORS = {
+  black: "black",
+  sepia: "#704214",
+  darkBlue: "darkblue"
+} as const
+
+export type colorsType = keyof typeof COLORS
 
 interface BookContextInterface {
   textSettings: {

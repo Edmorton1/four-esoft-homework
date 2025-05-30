@@ -3,7 +3,10 @@ import { createTheme } from "@mui/material/styles";
 
 const muiTheme = (mode: ThemeType) => createTheme({
   palette: {
-    mode
+    mode,
+    background: {
+      paper: mode === "dark" ? "#292929" : "#dedede"
+    }
   }
 })
 

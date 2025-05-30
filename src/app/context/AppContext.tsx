@@ -1,4 +1,5 @@
 import muiTheme from "@/app/context/MuiTheme";
+import { BOOKS } from "@/CONST/PLACEHOLDERS";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { createContext, useState, type ReactNode } from "react";
@@ -8,11 +9,15 @@ export type BookType = {
   title: string,
   author: string,
   year: number,
+  isbn?: string
+  description?: string,
 }
 
 export type FilterType = {
-  author?: boolean,
-  year?: boolean
+  authors?: boolean,
+  favorites?: boolean,
+  min_year?: number,
+  max_year?: number,
 }
 
 export type ThemeType = 'light' | 'dark'
@@ -37,20 +42,7 @@ export const AppContext = createContext<AppContextInterface | null>(null);
 
 function AppProvider({children}: {children: ReactNode}) {
   const [theme, setTheme] = useState<AppContextInterface['theme']>(localStorage.getItem('theme') === 'light' ? 'light' : 'dark')
-  const [books, setBooks] = useState<AppContextInterface['books']>([
-    {
-      id: crypto.randomUUID(),
-      title: "Евгений Онегин",
-      author: "Пушкин",
-      year: 1823
-    },
-    {
-      id: crypto.randomUUID(),
-      title: "Преступление и наказание",
-      author: "Достоевский",
-      year: 1866
-    }
-  ])
+  const [books, setBooks] = useState<AppContextInterface['books']>(BOOKS)
   // const [favorites, setFavorites] = useState<AppContextInterface['favorites']>([books[0].id])
   const [favorites, setFavorites] = useState<AppContextInterface['favorites']>([])
   const [searchQuery, setSearchQuery] = useState<AppContextInterface['searchQuery']>('')
