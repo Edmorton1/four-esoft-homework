@@ -1,10 +1,10 @@
 import type { BookType, FilterType, ThemeType } from "@/app/context/AppTypes";
-import muiTheme from "@/app/context/MuiTheme";
-import { BOOKS } from "@/CONST/PLACEHOLDERS";
-import parseParams from "@/app/context/params";
+import muiTheme from "@/app/context/theme/MuiTheme";
+import parseParams from "@/app/context/urlParams/params";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import { createContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useCallback, useMemo, useState, type ReactNode } from "react";
+import data from "@/shared/json/data.json"
 
 interface AppContextInterface {
   theme: ThemeType;
@@ -26,43 +26,43 @@ interface AppContextInterface {
 export const AppContext = createContext<AppContextInterface | null>(null);
 
 function AppProvider({children}: {children: ReactNode}) {
+
   const [theme, setTheme] = useState<AppContextInterface['theme']>(localStorage.getItem('theme') === 'light' ? 'light' : 'dark')
-  const [books, setBooks] = useState<AppContextInterface['books']>(BOOKS)
-  // const years = books.sort((a, b) => a.year - b.year).map(e => e.year)
-  // const [favorites, setFavorites] = useState<AppContextInterface['favorites']>([books[0].id])
-  const [favorites, setFavorites] = useState<AppContextInterface['favorites']>(['1b3e5fa4-67b6-4f6d-94cd-5e2dfdf80125', '5fcb6cf2-2e80-4ec6-8c52-4bc2074e74e6'])
+  const [books, setBooks] = useState<AppContextInterface['books']>(data)
+  const [favorites, setFavorites] = useState<AppContextInterface['favorites']>([])
   const [searchQuery, setSearchQuery] = useState<AppContextInterface['searchQuery']>('')
   const [filters, setFilters] = useState<AppContextInterface['filters']>(parseParams())
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark')
     setTheme(prev => prev === 'dark' ? 'light' : 'dark'); console.log(theme)
-  }
-  const addBook = (book: BookType) => setBooks(prev => [...prev, book])
-  const removeBook = (id: string) => setBooks(prev => prev.filter(e => e.id !== id))
-  const toggleFavorite = (id: string) => setFavorites(prev => {
-    // console.log(prev)
+  }, [theme])
+
+  const addBook = useCallback((book: BookType) => setBooks(prev => [...prev, book]), [])
+
+  const removeBook = useCallback((id: string) => setBooks(prev => prev.filter(e => e.id !== id)), [])
+
+  const toggleFavorite = useCallback((id: string) => setFavorites(prev => {
+    if (id === 'resetAll') {
+      return []
+    }
     if (prev.some(e => e === id)) {
       return prev.filter(e => e !== id)
     } else {
       return [...prev, id]
     }
-  })
+  }), [])
 
   console.log('filters', filters)
 
-  const filtredBooks = books
+  const filtredBooks = useMemo(() => books
      //SEARCH PARAMS
     .filter(e => e.title.toLocaleLowerCase().includes(searchQuery) || e.author.toLowerCase().includes(searchQuery))
     // ОСТАЛЬНЫЕ ФИЛЬТРЫ
     .filter(e => filters.favorites ? favorites.includes(e.id) : true)
     .filter(e => filters.author.length > 0 ? filters.author?.includes(e.author) : true)
     .filter(e => filters.yearMin ? e.year >= filters.yearMin : true)
-    .filter(e => filters.yearMax ? e.year <= filters.yearMax : true)
-
-  useEffect(() => {
-
-  }, [])
+    .filter(e => filters.yearMax ? e.year <= filters.yearMax : true), [books, filters, favorites, searchQuery])
   
   return <AppContext.Provider value={{
     theme,

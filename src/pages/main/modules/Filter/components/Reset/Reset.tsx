@@ -1,5 +1,5 @@
 import { AppContext } from "@/app/context/AppContext"
-import paramsSchema from "@/app/context/validateParams"
+import paramsSchema from "@/app/context/urlParams/validateParams"
 import Button from "@mui/material/Button"
 import { useContext } from "react"
 import { useSearchParams } from "react-router-dom"

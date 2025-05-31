@@ -8,11 +8,10 @@ import Typography from "@mui/material/Typography";
 import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ThemeButton from "@/shared/ui/ThemeButton/ThemeButton";
 
 function Header() {
   const ctx = useContext(AppContext);
-
-  const handleTheme = () => ctx?.toggleTheme();
 
   return (
     <>
@@ -21,13 +20,11 @@ function Header() {
           <Toolbar>
             <Link to={"/"} style={{all: "unset", cursor: "pointer"}}><Typography>Bibangelion</Typography></Link>
             <Search />
-            {/* <div>{ctx!.searchQuery}</div> */}
-            <Button variant="contained" color="primary" onClick={handleTheme}>
-              {localStorage.getItem("theme") === "light" ? "Тёмную" : "Светлую"}
-            </Button>
-            <Badge badgeContent={ctx!.favorites.length} color="error" sx={{ml: 1}}>
+            <ThemeButton />
+            <Badge badgeContent={ctx!.favorites.length} color="error" sx={{ml: 1, mr: 2}}>
               <FavoriteIcon />
             </Badge>
+            <Link to={"/settings"}><Button variant="contained">Настройки</Button></Link>
           </Toolbar>
         </AppBar>
       </header>
@@ -38,10 +35,3 @@ function Header() {
 }
 
 export default Header;
-
-// <header>
-//   <img src="" alt="Логотип" />
-//   <input type="text" placeholder="Строка поиска" />
-//   <div>Bibangelion</div>
-//   <button onClick={handleTheme}>Переключатель темы</button>
-// </header>

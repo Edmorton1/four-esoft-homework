@@ -1,4 +1,4 @@
-import type paramsSchema from "@/app/context/validateParams"
+import type paramsSchema from "@/app/context/urlParams/validateParams"
 import type { z } from "zod"
 
 export type BookType = {

@@ -1,4 +1,4 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useCallback, useState, type ReactNode } from "react";
 
 export const FONT_SIZE = {
   small: "маленький",
@@ -37,10 +37,11 @@ export function BookProvider({ children }: { children: ReactNode }) {
     bold: false,
   });
 
-  const setTextColor = (color: BookContextInterface['textSettings']['color']) => setTextSettings(prev => ({...prev, color}));
-  const setTextSize = (size: BookContextInterface['textSettings']['size']) => setTextSettings(prev => ({...prev, size}));
-  const toggleBold = () => setTextSettings(prev => ({...prev, bold: !prev.bold}));
+  const setTextColor = useCallback((color: BookContextInterface['textSettings']['color']) => setTextSettings(prev => ({...prev, color})), []);
+  const setTextSize = useCallback((size: BookContextInterface['textSettings']['size']) => setTextSettings(prev => ({...prev, size})), []);
+  const toggleBold = useCallback(() => setTextSettings(prev => ({...prev, bold: !prev.bold})), []);
 
+  console.log(textSettings)
   return (
     <BookContext.Provider value={{textSettings, setTextColor, setTextSize, toggleBold}}>
       {children}

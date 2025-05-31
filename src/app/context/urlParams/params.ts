@@ -1,5 +1,5 @@
 import type { FilterType } from "@/app/context/AppTypes";
-import paramsSchema from "@/app/context/validateParams";
+import paramsSchema from "@/app/context/urlParams/validateParams";
 // http://localhost:5173/?search=react&author=Smith&author=Jones&yearMin=2000&yearMax=2020&favorites=true
 
 function parseParams(): FilterType {

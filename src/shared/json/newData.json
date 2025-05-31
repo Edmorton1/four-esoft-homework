@@ -1,0 +1,92 @@
+[
+    {
+    "id": "73451a2a-5e38-4e9c-91c5-5d9dc67f84f2",
+    "title": "Мастер и Маргарита",
+    "author": "Булгаков",
+    "year": 1967,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-112233-4"
+  },
+  {
+    "id": "f68d7b52-3976-4026-a56d-ef77289a67c4",
+    "title": "Отцы и дети",
+    "author": "Тургенев",
+    "year": 1862,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-334455-5"
+  },
+  {
+    "id": "57b1f7d4-300c-4993-8a1d-0c0bded117cc",
+    "title": "Мёртвые души",
+    "author": "Гоголь",
+    "year": 1842,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-556677-6"
+  },
+  {
+    "id": "51f84b23-2d7e-4566-b80f-93c9c3d79b4f",
+    "title": "Дубровский",
+    "author": "Пушкин",
+    "year": 1841,
+    "img": "https://cdn1.ozone.ru/multimedia/1022849326.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-998877-7"
+  },
+  {
+    "id": "b86f0b0d-e6aa-4239-8591-bfa74d3efb88",
+    "title": "Идиот",
+    "author": "Достоевский",
+    "year": 1869,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-909090-8"
+  },
+  {
+    "id": "adacba8e-2a1f-4b1c-9a71-8e6ed8df2f66",
+    "title": "Демон",
+    "author": "Лермонтов",
+    "year": 1829,
+    "img": "https://cdn1.ozone.ru/multimedia/1033869991.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-666777-9"
+  },
+  {
+    "id": "c004e343-e3a6-4c7f-a95c-89b34cb8a73f",
+    "title": "Герой нашего времени",
+    "author": "Лермонтов",
+    "year": 1840,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-121212-0"
+  },
+  {
+    "id": "4cb43e35-6070-44d6-928e-5ae4b42bde94",
+    "title": "Записки из подполья",
+    "author": "Достоевский",
+    "year": 1864,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-787878-1"
+  },
+  {
+    "id": "85f7ff02-8c3f-4cf9-9b3f-6d3c6c3d02db",
+    "title": "Капитанская дочка",
+    "author": "Пушкин",
+    "year": 1836,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-232323-2"
+  },
+  {
+    "id": "3c2a7e39-0f3c-4b90-a06b-d2e020c95751",
+    "title": "Белая гвардия",
+    "author": "Булгаков",
+    "year": 1925,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-303030-3"
+  },
+  {
+    "id": "ef675c64-3c03-4e8a-bf92-e2a4a3a38f31",
+    "title": "Обломов",
+    "author": "Гончаров",
+    "year": 1859,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isbn": "978-5-17-414141-4"
+  }
+]

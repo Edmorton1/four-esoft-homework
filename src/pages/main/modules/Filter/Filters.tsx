@@ -51,10 +51,3 @@ function Filters() {
 }
 
 export default Filters;
-
-// return <div className={styles.main__filters}>
-// <InputRange />
-// <Authors />
-// <ToggleFavorite />
-// <Reset />
-// </div>

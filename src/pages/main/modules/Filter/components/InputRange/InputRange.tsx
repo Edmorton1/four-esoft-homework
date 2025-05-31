@@ -14,25 +14,26 @@ function InputRange() {
   console.log(ctx.filters.yearMin, ctx.filters.yearMax)
   const [range, setRange] = useState<[number, number]>([ctx.filters.yearMin || minYear, ctx.filters.yearMax || maxYear])
 
-  const handleChange = (e: {target: {value: [number, number]}}) => {
-    const newParams = new URLSearchParams(searchParams)
+  const handleChange = (_event: Event, newValue: number | number[]) => {
+    if (!Array.isArray(newValue)) return;
 
-    const val = e.target.value
-    console.log(val, range);
-    setRange([val[0], val[1]]);
+    const [min, max] = newValue;
+    setRange([min, max]);
 
-  if (val[0] !== range[0]) {
-    ctx.setFilters({ ...ctx.filters, yearMin: val[0] })
-    newParams.set('yearMin', String(val[0]))
-  }
+    const newParams = new URLSearchParams(searchParams);
 
-  if (val[1] !== range[1]) {
-    ctx.setFilters({ ...ctx.filters, yearMax: val[1] })
-    newParams.set('yearMax', String(val[1]))
-  }
-    
-    setSearchParams(newParams)
-  }
+    if (min !== range[0]) {
+      ctx.setFilters({ ...ctx.filters, yearMin: min });
+      newParams.set("yearMin", String(min));
+    }
+
+    if (max !== range[1]) {
+      ctx.setFilters({ ...ctx.filters, yearMax: max });
+      newParams.set("yearMax", String(max));
+    }
+
+    setSearchParams(newParams);
+  };
   
   useEffect(() => {
     console.log('SEARCH PARAMS ПОМЕНЯЛСЯ')

@@ -1,4 +1,4 @@
-import { type BookType } from "@/app/context/AppContext"
+import { type BookType } from "@/app/context/AppTypes"
 import Card from "@mui/material/Card"
 import CardHeader from "@mui/material/CardHeader"
 import CardMedia from "@mui/material/CardMedia"
@@ -8,8 +8,10 @@ import { Link } from "react-router-dom"
 import { BOOK } from "@/CONST/ROUTES"
 import ToFavorites from "@/shared/ui/ToFavorites/ToFavorites"
 import styles from "@/shared/css/Main.module.scss"
+import { memo } from "react"
 
-function BookCard({id, title, author, year, img}: BookType) {  
+function BookCard({id, title, author, year, img}: BookType) {
+  console.log('CARD RERENDER')
   
   return <Card className={styles.main__cards__card}>
     <Link to={`${BOOK}/${id}${location.search}`} style={{all: "unset", cursor: "pointer"}}>
@@ -36,4 +38,4 @@ function BookCard({id, title, author, year, img}: BookType) {
   </Card>
 }
 
-export default BookCard
+export default memo(BookCard)
