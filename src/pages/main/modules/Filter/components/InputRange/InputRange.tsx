@@ -11,7 +11,7 @@ function InputRange() {
   const minYear = years[0].year
   const maxYear = years[years?.length - 1].year
 
-  console.log(ctx.filters.yearMin, ctx.filters.yearMax)
+  // console.log(ctx.filters.yearMin, ctx.filters.yearMax)
   const [range, setRange] = useState<[number, number]>([ctx.filters.yearMin || minYear, ctx.filters.yearMax || maxYear])
 
   const handleChange = (_event: Event, newValue: number | number[]) => {
