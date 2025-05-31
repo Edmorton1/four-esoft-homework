@@ -11,7 +11,7 @@ import styles from "@/shared/css/Main.module.scss"
 import { memo } from "react"
 
 function BookCard({id, title, author, year, img}: BookType) {
-  console.log('CARD RERENDER')
+  // console.log('CARD RERENDER')
   
   return <Card className={styles.main__cards__card}>
     <Link to={`${BOOK}/${id}${location.search}`} style={{all: "unset", cursor: "pointer"}}>

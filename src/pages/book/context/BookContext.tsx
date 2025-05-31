@@ -41,7 +41,7 @@ export function BookProvider({ children }: { children: ReactNode }) {
   const setTextSize = useCallback((size: BookContextInterface['textSettings']['size']) => setTextSettings(prev => ({...prev, size})), []);
   const toggleBold = useCallback(() => setTextSettings(prev => ({...prev, bold: !prev.bold})), []);
 
-  console.log(textSettings)
+  // console.log(textSettings)
   return (
     <BookContext.Provider value={{textSettings, setTextColor, setTextSize, toggleBold}}>
       {children}

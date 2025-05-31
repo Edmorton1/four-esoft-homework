@@ -36,7 +36,7 @@ function InputRange() {
   };
   
   useEffect(() => {
-    console.log('SEARCH PARAMS ПОМЕНЯЛСЯ')
+    // console.log('SEARCH PARAMS ПОМЕНЯЛСЯ')
     if (!searchParams.get('yearMin') && !searchParams.get('yearMax')) {
       setRange([minYear, maxYear])
     }
@@ -52,8 +52,6 @@ function InputRange() {
       valueLabelDisplay="auto"
 
       marks={[
-        // {value: minYear, label: minYear}, 
-        // {value: maxYear, label: maxYear}, 
         {value: Number(range[0]), label: range[0]}, 
         {value: Number(range[1]), label: range[1]}
       ]}
@@ -63,11 +61,3 @@ function InputRange() {
 }
 
 export default InputRange
-
-  // <Stack sx={{width: 300}}>
-
-  //   <Typography id={SLIDER} gutterBottom>Год выпуска:</Typography>
-  //   <Slider id={SLIDER} />
-  //   <Button>asd</Button>
-  //   <Button>asd</Button>
-  // </Stack>

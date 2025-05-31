@@ -18,7 +18,6 @@ interface AppContextInterface {
   addBook: (book: BookType) => void;
   removeBook: (id: string) => void;
   toggleFavorite: (id: string) => void;
-  // ВОЗМОЖНЫ ОШИБКИ ПОТОМ ПРОТЕСТИТЬ
   setSearchQuery: (query: string) => void;
   setFilters: (filters: FilterType) => void;
 }
@@ -35,7 +34,7 @@ function AppProvider({children}: {children: ReactNode}) {
 
   const toggleTheme = useCallback(() => {
     localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark')
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark'); console.log(theme)
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   }, [theme])
 
   const addBook = useCallback((book: BookType) => setBooks(prev => [...prev, book]), [])
@@ -53,7 +52,7 @@ function AppProvider({children}: {children: ReactNode}) {
     }
   }), [])
 
-  console.log('filters', filters)
+  // console.log('filters', filters)
 
   const filtredBooks = useMemo(() => books
      //SEARCH PARAMS

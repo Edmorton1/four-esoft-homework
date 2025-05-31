@@ -17,7 +17,7 @@ function Search() {
   }
 
   useEffect(() => {
-    console.log(debounce)
+    // console.log(debounce)
     ctx!.setSearchQuery(debounce?.toLowerCase() || '')
   }, [debounce])
 

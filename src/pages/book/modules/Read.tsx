@@ -5,7 +5,6 @@ import { useContext } from "react"
 
 function Read() {
   const ctx = useContext(BookContext)!
-  // console.log(ctx.textSettings.color)
 
   return <>
     <p>Текстовые настройки:</p>

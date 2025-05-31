@@ -11,7 +11,7 @@ $mb-width: 3vw;
   &__cards {
     margin-top: const.$filter-hg ;
     // flex: 1;
-    // width: 100%;
+    width: 100%;
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(5, minmax(300px, 1fr));
@@ -39,6 +39,11 @@ $mb-width: 3vw;
       grid-template-columns: repeat(3, 300px);
     }
   }
+  @media (max-width: 950px) {
+    &__cards {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
 
   &__filters {
     position: fixed;
@@ -52,15 +57,3 @@ $mb-width: 3vw;
     flex-direction: column;
   }
 }
-
-            // position: 'fixed',
-            // left: 0,
-            // width: 350,
-            // zIndex: 1200,
-            // p: 2,
-            // overflowX: 'hidden',
-            // bgcolor: 'background.paper',
-            // boxShadow: '2px 0 10px rgba(0,0,0,0.1)',
-            // display: "flex",
-            // flexDirection: "column",
-            // alignItems: "flex-end"

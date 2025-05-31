@@ -36,11 +36,3 @@ function Info({ book }: { book: BookType }) {
 }
 
 export default Info;
-
-// <h1>{book.title}</h1>
-// <h2>{book.author}</h2>
-// <img src="placeholder" alt="" />
-// <div>{book.year}</div>
-// <div>{book.isbn}</div>
-// <div>{book.description}</div>
-// <ToFavorites id={book.id} />

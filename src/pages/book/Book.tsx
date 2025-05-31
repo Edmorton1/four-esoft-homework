@@ -12,7 +12,7 @@ function Book() {
   const appCtx = useContext(AppContext)!
 
   const book = appCtx.books.find(e => e.id === id)
-  console.log(id)
+  // console.log(id)
 
   if (book) {
     return <BookProvider>
