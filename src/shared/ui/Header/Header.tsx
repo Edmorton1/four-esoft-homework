@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useContext } from "react";
-import { Outlet } from "react-router-dom";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link, Outlet } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function Header() {
   const ctx = useContext(AppContext);
@@ -16,17 +16,21 @@ function Header() {
 
   return (
     <>
-      <AppBar position="relative">
-        <Toolbar>
-          <Typography>Bibangelion</Typography>
-          <Search />
-          {/* <div>{ctx!.searchQuery}</div> */}
-          <Button variant="contained" color="inherit" onClick={handleTheme}>{localStorage.getItem('theme') === 'light' ? 'Тёмную' : "Светлую"}</Button>
-          <Badge badgeContent={ctx!.favorites.length} color="error">
-            <FavoriteIcon />
-          </Badge>
-        </Toolbar>
-      </AppBar>
+      <header>
+        <AppBar position="fixed">
+          <Toolbar>
+            <Link to={"/"} style={{all: "unset", cursor: "pointer"}}><Typography>Bibangelion</Typography></Link>
+            <Search />
+            {/* <div>{ctx!.searchQuery}</div> */}
+            <Button variant="contained" color="primary" onClick={handleTheme}>
+              {localStorage.getItem("theme") === "light" ? "Тёмную" : "Светлую"}
+            </Button>
+            <Badge badgeContent={ctx!.favorites.length} color="error" sx={{ml: 1}}>
+              <FavoriteIcon />
+            </Badge>
+          </Toolbar>
+        </AppBar>
+      </header>
 
       <Outlet />
     </>

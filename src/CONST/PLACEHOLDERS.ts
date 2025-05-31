@@ -19,13 +19,15 @@ export const BOOKS: BookType[] = [
     id: "1b3e5fa4-67b6-4f6d-94cd-5e2dfdf80125",
     title: "Евгений Онегин",
     author: "Пушкин",
-    year: 1823
+    year: 1823,
+    img: "https://cdn.azbooka.ru/cv/w1100/8fb16b40-17d4-43fa-b3fa-20238b342ad3.jpg"
   },
   {
     id: "5fcb6cf2-2e80-4ec6-8c52-4bc2074e74e6",
     title: "Преступление и наказание",
     author: "Достоевский",
-    year: 1866
+    year: 1866,
+    img: "https://babelbooksberlin.com/cdn/shop/products/037422f543a847417de38b1be2c73f77.webp?v=1708968502"
   },
   {
     id: "0fcbe3cc-3a30-4ec1-91f3-1b7c2a2df7f1",

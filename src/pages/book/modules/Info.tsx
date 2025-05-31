@@ -13,10 +13,8 @@ function Info({ book }: { book: BookType }) {
         <Stack direction={"row"}>
           <CardMedia
             component={"img"}
-            image={bookImage}
-            sx={{
-              width: "59%"
-            }}
+            image={book.img ?? bookImage}
+            sx={{maxHeight: 600, objectFit: "contain", mr: 3}}
           />
           <Box>
             <Typography variant="h1">{book.title}</Typography>

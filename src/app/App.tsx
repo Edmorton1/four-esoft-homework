@@ -5,6 +5,7 @@ import Main from "@/pages/main/Main"
 import Settings from "@/pages/settings/Settings"
 import Header from "@/shared/ui/Header/Header"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import "@/shared/css/App.scss"
 
 function App() {
 

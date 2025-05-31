@@ -1,0 +1,6 @@
+@use "./CONST.scss" as const;
+
+main {
+  margin-top: const.$header-hg;
+  padding-bottom: const.$main-pg;
+}

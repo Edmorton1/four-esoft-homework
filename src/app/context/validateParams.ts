@@ -1,6 +1,10 @@
 import {z} from "zod"
 
-const toBoolean = (val: unknown) => Boolean(val)
+const toBoolean = (val: unknown) => {
+  if (val === 'true') {
+    return true
+  } return false
+}
 
 const toNumber= z.preprocess(val => {
     if (Number(val)) {

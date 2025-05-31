@@ -16,9 +16,11 @@ function Book() {
 
   if (book) {
     return <BookProvider>
-      <Link to={MAIN}><Button variant="contained">Назад</Button></Link>
-      <Info book={book} />
-      <Read />
+      <main>
+        <Link to={`${MAIN}${location.search}`}><Button variant="contained">К списку</Button></Link>
+        <Info book={book} />
+        <Read />
+      </main>
     </BookProvider>
   }
 

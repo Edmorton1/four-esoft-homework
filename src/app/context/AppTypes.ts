@@ -1,4 +1,4 @@
-import type paramsSchema from "@/shared/hooks/validateParams"
+import type paramsSchema from "@/app/context/validateParams"
 import type { z } from "zod"
 
 export type BookType = {
@@ -8,6 +8,7 @@ export type BookType = {
   year: number,
   isbn?: string
   description?: string,
+  img?: string
 }
 
 export type FilterType = z.infer<typeof paramsSchema>

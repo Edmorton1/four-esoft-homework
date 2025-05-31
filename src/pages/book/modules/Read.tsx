@@ -8,7 +8,7 @@ function Read() {
   // console.log(ctx.textSettings.color)
 
   return <>
-    <p>Текст:</p>
+    <p>Текстовые настройки:</p>
     <TextSettings />
     <div className={styles.text} style={{color: ctx.textSettings.color, fontSize: ctx.textSettings.size, fontWeight: ctx.textSettings.bold ? "bold" : "normal" }}>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui provident, adipisci consectetur cupiditate nam numquam minus eum quo fugit illum fuga esse dolores voluptates consequatur aut sunt, vel nesciunt eligendi?

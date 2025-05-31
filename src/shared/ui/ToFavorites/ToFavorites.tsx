@@ -9,7 +9,7 @@ function ToFavorites({id}: {id: string}) {
   const handleClick = (id: string) => ctx.toggleFavorite(id)
   const inFavorite = ctx.favorites.some(e => e === id)
 
-  return <Button color="success" onClick={() => handleClick(id)}>
+  return <Button variant="outlined" color="success" onClick={() => handleClick(id)}>
     <span>{inFavorite ? 'В избранном' : 'В избранное'}</span>
     {/* <IconButton variant="contained" > */}
       {inFavorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon color="error" />}

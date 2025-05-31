@@ -18,7 +18,7 @@ function Search() {
 
   useEffect(() => {
     console.log(debounce)
-    ctx!.setSearchQuery(debounce || '')
+    ctx!.setSearchQuery(debounce?.toLowerCase() || '')
   }, [debounce])
 
   return (
@@ -26,9 +26,9 @@ function Search() {
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <Tooltip title="Введите запрос для поиска" disableHoverListener disableTouchListener>
+      <Tooltip title="По автору и названию" disableHoverListener disableTouchListener>
         <StyledInputBase
-          placeholder="Search…"
+          placeholder="Поиск…"
           inputProps={{ "aria-label": "search" }}
           onChange={handleChange}
           value={value}

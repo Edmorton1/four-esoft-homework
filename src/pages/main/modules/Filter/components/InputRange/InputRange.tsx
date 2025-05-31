@@ -1,64 +1,72 @@
-// import { AppContext } from "@/app/context/AppContext"
-// import useDebounceParams from "@/shared/hooks/useDebounceParams"
-// import useUpdateParams from "@/shared/hooks/useUpdateParams"
-// import Slider from "@mui/material/Slider"
-// import Typography from "@mui/material/Typography"
-// // import Button from "@mui/material/Button"
-// // import Slider from "@mui/material/Slider"
-// // import Stack from "@mui/material/Stack"
-// // import Typography from "@mui/material/Typography"
-// import { useContext, useEffect, useState } from "react"
+import { AppContext } from "@/app/context/AppContext"
+import Slider from "@mui/material/Slider"
+import { useContext, useEffect, useState } from "react"
+import { useSearchParams } from "react-router-dom"
 
-// // const SLIDER = "slider-input"
+function InputRange() {
+  const ctx = useContext(AppContext)!
+  const [searchParams, setSearchParams] = useSearchParams()
 
-// function InputRange() {
-//   const ctx = useContext(AppContext)
+  const years = ctx.books.sort((a, b) => a.year - b.year)
+  const minYear = years[0].year
+  const maxYear = years[years?.length - 1].year
 
-//   const years = ctx!.books.sort((a, b) => a.year - b.year)
-//   const minYear = years[0].year
-//   const maxYear = years[years?.length - 1].year
+  console.log(ctx.filters.yearMin, ctx.filters.yearMax)
+  const [range, setRange] = useState<[number, number]>([ctx.filters.yearMin || minYear, ctx.filters.yearMax || maxYear])
 
-//   const [firstDeb, setFirstDeb] = useDebounceParams('min_year', 200)
-//   const [secondDeb, setSecondDeb] = useDebounceParams('max_year', 200)
-//   const [params] = useUpdateParams()
+  const handleChange = (e: {target: {value: [number, number]}}) => {
+    const newParams = new URLSearchParams(searchParams)
 
-//   const [range, setRange] = useState<[string | number, string | number]>([params.min_year || minYear, params.max_year || maxYear])
+    const val = e.target.value
+    console.log(val, range);
+    setRange([val[0], val[1]]);
 
-//   const handleChange = (e: {target: {value: [number, number]}}) => {
-//     const val = e.target.value
-//     console.log(val, range);
-//     setRange([val[0], val[1]]);
-//     const val_sorted = val.sort((a, b) => a - b)
-//     setFirstDeb(val_sorted[0]);
-//     setSecondDeb(val_sorted[1])
-//   }
+  if (val[0] !== range[0]) {
+    ctx.setFilters({ ...ctx.filters, yearMin: val[0] })
+    newParams.set('yearMin', String(val[0]))
+  }
 
-//   return <>
-//     <Slider
-//       min={minYear}
-//       max={maxYear}
-//       getAriaLabel={() => 'Temperature range'}
-//       value={range}
-//       onChange={handleChange}
-//       valueLabelDisplay="auto"
+  if (val[1] !== range[1]) {
+    ctx.setFilters({ ...ctx.filters, yearMax: val[1] })
+    newParams.set('yearMax', String(val[1]))
+  }
+    
+    setSearchParams(newParams)
+  }
+  
+  useEffect(() => {
+    console.log('SEARCH PARAMS ПОМЕНЯЛСЯ')
+    if (!searchParams.get('yearMin') && !searchParams.get('yearMax')) {
+      setRange([minYear, maxYear])
+    }
+  }, [searchParams])
 
-//       marks={[
-//         // {value: minYear, label: minYear}, 
-//         // {value: maxYear, label: maxYear}, 
-//         {value: Number(range[0]), label: range[0]}, 
-//         {value: Number(range[1]), label: range[1]}
-//       ]}
-//     />
-//   </>
+  return <>
+    <Slider
+      min={minYear}
+      max={maxYear}
+      getAriaLabel={() => 'Temperature range'}
+      value={range}
+      onChange={handleChange}
+      valueLabelDisplay="auto"
 
-// }
+      marks={[
+        // {value: minYear, label: minYear}, 
+        // {value: maxYear, label: maxYear}, 
+        {value: Number(range[0]), label: range[0]}, 
+        {value: Number(range[1]), label: range[1]}
+      ]}
+    />
+  </>
 
-// export default InputRange
+}
 
-//   // <Stack sx={{width: 300}}>
+export default InputRange
 
-//   //   <Typography id={SLIDER} gutterBottom>Год выпуска:</Typography>
-//   //   <Slider id={SLIDER} />
-//   //   <Button>asd</Button>
-//   //   <Button>asd</Button>
-//   // </Stack>
+  // <Stack sx={{width: 300}}>
+
+  //   <Typography id={SLIDER} gutterBottom>Год выпуска:</Typography>
+  //   <Slider id={SLIDER} />
+  //   <Button>asd</Button>
+  //   <Button>asd</Button>
+  // </Stack>
